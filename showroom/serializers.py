@@ -3,7 +3,6 @@ from .models import *
 
 
 class CarListSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Car
         fields = '__all__'
@@ -18,4 +17,22 @@ class CarManufacturerSerializer(serializers.ModelSerializer):
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Customer
+        fields = '__all__'
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('username', 'password', 'email')
+
+
+class SupplierListRetrieveSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Supplier
+        fields = ('name', 'foundation_year', 'cars', 'showrooms')
+
+
+class ShowroomListRetrieveSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Showroom
         fields = '__all__'
