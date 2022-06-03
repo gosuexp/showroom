@@ -1,4 +1,6 @@
-from rest_framework import mixins, viewsets
+from rest_framework import mixins, viewsets, permissions
+from rest_framework.permissions import IsAuthenticated
+
 from .models import Car, CarManufacturer, Customer, User, Supplier, Showroom
 from showroom.serializers import CarListSerializer, CarManufacturerSerializer, CustomerSerializer, UserSerializer, \
     SupplierListRetrieveSerializer, ShowroomListRetrieveSerializer
@@ -11,7 +13,7 @@ class CarViewSet(mixins.ListModelMixin,
                  viewsets.GenericViewSet):
     queryset = Car.objects.all()
     serializer_class = CarListSerializer
-
+    permission_classes = (IsAuthenticated,)
 
 class CarManufacturerViewSet(mixins.ListModelMixin,
                              mixins.CreateModelMixin,
