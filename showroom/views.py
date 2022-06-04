@@ -1,9 +1,11 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import mixins, viewsets, permissions
 from rest_framework.permissions import IsAuthenticated
 
 from .models import Car, CarManufacturer, Customer, User, Supplier, Showroom
 from showroom.serializers import CarListSerializer, CarManufacturerSerializer, CustomerSerializer, UserSerializer, \
     SupplierListRetrieveSerializer, ShowroomListRetrieveSerializer
+from .service import CarFilter
 
 
 class CarViewSet(mixins.ListModelMixin,
@@ -14,6 +16,9 @@ class CarViewSet(mixins.ListModelMixin,
     queryset = Car.objects.all()
     serializer_class = CarListSerializer
     permission_classes = (IsAuthenticated,)
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = CarFilter
+
 
 class CarManufacturerViewSet(mixins.ListModelMixin,
                              mixins.CreateModelMixin,

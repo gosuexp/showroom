@@ -18,6 +18,7 @@ class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Customer
         fields = '__all__'
+        read_only_fields = ('balance',)
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -35,4 +36,5 @@ class SupplierListRetrieveSerializer(serializers.ModelSerializer):
 class ShowroomListRetrieveSerializer(serializers.ModelSerializer):
     class Meta:
         model = Showroom
-        fields = '__all__'
+        exclude = ('time_create', 'time_update')
+        read_only_fields = ('balance',)
