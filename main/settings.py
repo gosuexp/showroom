@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'debug_toolbar',
+    'djoser',
+    'drf_yasg',
+
 ]
 
 MIDDLEWARE = [
@@ -152,6 +155,14 @@ REST_FRAMEWORK = {
     ),
 }
 
+DJOSER = {
+    'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',
+    'USERNAME_RESET_CONFIRM_URL': '#/username/reset/confirm/{uid}/{token}',
+    'ACTIVATION_URL': '#/activate/{uid}/{token}',
+    'SEND_ACTIVATION_EMAIL': True,
+    'SERIALIZERS': {},
+}
+
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=1),
@@ -184,7 +195,17 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 
+# Email settings
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = '*'
+EMAIL_HOST_PASSWORD = '*'
+EMAIL_USE_TLS = True
+
+
 
 INTERNAL_IPS = [      # debug tool bar
     '127.0.0.1',
 ]
+
+

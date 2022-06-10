@@ -21,10 +21,10 @@ class CustomerSerializer(serializers.ModelSerializer):
         read_only_fields = ('balance',)
 
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ('username', 'password', 'email')
+# class UserSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = User
+#         fields = ('username', 'password', 'email')
 
 
 class SupplierListRetrieveSerializer(serializers.ModelSerializer):
@@ -36,5 +36,5 @@ class SupplierListRetrieveSerializer(serializers.ModelSerializer):
 class ShowroomListRetrieveSerializer(serializers.ModelSerializer):
     class Meta:
         model = Showroom
-        exclude = ('time_create', 'time_update')
+        fields = '__all__'
         read_only_fields = ('balance',)

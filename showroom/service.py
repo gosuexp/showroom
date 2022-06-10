@@ -7,6 +7,8 @@ class CharFilterInFilter(filters.BaseInFilter, filters.CharFilter):
 
 
 class CarFilter(filters.FilterSet):
+    car_type = CharFilterInFilter(field_name='car_type', lookup_expr='in')
+    price = filters.RangeFilter(field_name='price')
 
     class Meta:
         model = Car

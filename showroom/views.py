@@ -3,7 +3,7 @@ from rest_framework import mixins, viewsets, permissions
 from rest_framework.permissions import IsAuthenticated
 
 from .models import Car, CarManufacturer, Customer, User, Supplier, Showroom
-from showroom.serializers import CarListSerializer, CarManufacturerSerializer, CustomerSerializer, UserSerializer, \
+from showroom.serializers import CarListSerializer, CarManufacturerSerializer, CustomerSerializer,  \
     SupplierListRetrieveSerializer, ShowroomListRetrieveSerializer
 from .service import CarFilter
 
@@ -38,13 +38,13 @@ class CustomerViewSet(mixins.ListModelMixin,
     queryset = Customer.objects.all()
 
 
-class UserViewSet(mixins.ListModelMixin,
-                  mixins.CreateModelMixin,
-                  mixins.RetrieveModelMixin,
-                  mixins.UpdateModelMixin,
-                  viewsets.GenericViewSet):
-    serializer_class = UserSerializer
-    queryset = User.objects.all()
+# class UserViewSet(mixins.ListModelMixin,
+#                   mixins.CreateModelMixin,
+#                   mixins.RetrieveModelMixin,
+#                   mixins.UpdateModelMixin,
+#                   viewsets.GenericViewSet):
+#     serializer_class = UserSerializer
+#     queryset = User.objects.all()
 
 
 class SupplierViewSet(mixins.ListModelMixin,
@@ -58,6 +58,8 @@ class SupplierViewSet(mixins.ListModelMixin,
 
 class ShowroomViewSet(mixins.ListModelMixin,
                       mixins.RetrieveModelMixin,
+                      mixins.CreateModelMixin,
+                      mixins.UpdateModelMixin,
                       viewsets.GenericViewSet):
     serializer_class = ShowroomListRetrieveSerializer
     queryset = Showroom.objects.all()
