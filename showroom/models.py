@@ -36,7 +36,7 @@ class Customer(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
-        return self.user
+        return str(self.user)
 
 
 class CustomerHistory(models.Model):
@@ -54,6 +54,8 @@ class CustomerOrder(models.Model):
     customer = models.ForeignKey('Customer', on_delete=models.CASCADE)
     price = models.DecimalField(decimal_places=2, max_digits=10)
 
+    def __str__(self):
+        return f'{self.manufacturer}-{self.price}'
 
 #showroom
 class Showroom(models.Model):
@@ -71,6 +73,9 @@ class ShowroomHistory(models.Model):
     price = models.DecimalField(decimal_places=2, max_digits=10)
     showroom = models.ForeignKey('Showroom', on_delete=models.CASCADE)
     manufacturer = models.ForeignKey(CarManufacturer, on_delete=models.CASCADE, default=1)
+
+    def __str__(self):
+        return f'{self.manufacturer},{self.price}'
 
 
 #supplier

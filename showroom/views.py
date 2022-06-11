@@ -1,6 +1,6 @@
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import mixins, viewsets, permissions
-from rest_framework.permissions import IsAuthenticated
+from rest_framework import mixins, viewsets
+from rest_framework.permissions import IsAuthenticated, BasePermission
 
 from .models import Car, CarManufacturer, Customer, User, Supplier, Showroom
 from showroom.serializers import CarListSerializer, CarManufacturerSerializer, CustomerSerializer,  \
@@ -16,6 +16,7 @@ class CarViewSet(mixins.ListModelMixin,
     queryset = Car.objects.all()
     serializer_class = CarListSerializer
     permission_classes = (IsAuthenticated,)
+    # permission_classes = (BasePermission,)
     filter_backends = (DjangoFilterBackend,)
     filterset_class = CarFilter
 
@@ -36,15 +37,6 @@ class CustomerViewSet(mixins.ListModelMixin,
                       viewsets.GenericViewSet):
     serializer_class = CustomerSerializer
     queryset = Customer.objects.all()
-
-
-# class UserViewSet(mixins.ListModelMixin,
-#                   mixins.CreateModelMixin,
-#                   mixins.RetrieveModelMixin,
-#                   mixins.UpdateModelMixin,
-#                   viewsets.GenericViewSet):
-#     serializer_class = UserSerializer
-#     queryset = User.objects.all()
 
 
 class SupplierViewSet(mixins.ListModelMixin,
