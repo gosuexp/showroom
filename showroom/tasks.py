@@ -12,11 +12,11 @@ def customers_buy_cars():
                 if order.manufacturer in x and y.price <= order.price:
                     CustomerHistory.objects.create(manufacturer=order.manufacturer,
                                                    customer=order.customer,
-                                                   showroom=Showroom.objects.all()[0],
+                                                   showroom=showroom,
                                                    price=y.price)
                     ShowroomHistory.objects.create(manufacturer=order.manufacturer,
-                                                   showroom=Showroom.objects.all()[0],
-                                                   price=order.price)
+                                                   showroom=showroom,
+                                                   price=y.price)
 
 
 @app.task

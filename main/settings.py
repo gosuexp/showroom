@@ -82,24 +82,25 @@ WSGI_APPLICATION = 'main.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'show_room_db',
-#         'USER': 'postgres',
-#         'PASSWORD': '123',
-#         'HOST': '127.0.0.1',
-#         'PORT': '5432',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'show_room_db',
+        'USER': 'postgres',
+        'PASSWORD': '123',
+        'HOST': 'db',
+        # 'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+#
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -207,8 +208,8 @@ INTERNAL_IPS = [      # debug tool bar
     '127.0.0.1',
 ]
 
-
-REDIS_HOST = '0.0.0.0'
+# REDIS_HOST = '0.0.0.0'
+REDIS_HOST = 'redis' #docker
 REDIS_PORT = '6379'
 CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
 CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
