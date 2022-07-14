@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'main.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'show_room_db',
+        'NAME': 'showroom_db',
         'USER': 'postgres',
         'PASSWORD': '123',
         'HOST': 'db',

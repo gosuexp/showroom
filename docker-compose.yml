@@ -12,7 +12,7 @@ services:
       - "8000:8000"
     environment:
       - DB_HOST=db
-      - POSTGRES_NAME=show_room_db
+      - POSTGRES_NAME=showroom_db
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=123
     depends_on:
@@ -21,11 +21,11 @@ services:
   db:
     image: postgres:12
     environment:
-      - POSTGRES_DB=show_room_db
+      - POSTGRES_DB=showroom_db
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=123
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - pgdata:/var/lib/postgresql/data/
     ports:
       - "5433:5432"
 
@@ -66,4 +66,4 @@ services:
         - celery-beat
 
 volumes:
-  postgres_data:
+  pgdata:
